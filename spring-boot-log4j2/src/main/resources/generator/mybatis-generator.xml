@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 引入配置文件 -->
+    <properties resource="generator/mybatis-generator.properties"/>
+    <context id="MysqlTables" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="utf-8"/>
+        <!-- 自动识别数据库关键字，默认false，如果设置为true，MBG会自动给表名或字段名添加分隔符 -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <!-- 注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+        </commentGenerator>
+
+        <!-- 配置链接数据库-->
+        <jdbcConnection driverClass="${ds.connection.driver_class}"
+                        connectionURL="${ds.connection.url}"
+                        userId="${ds.connection.username}"
+                        password="${ds.connection.password}">
+        </jdbcConnection>
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}"/>
+
+        <sqlMapGenerator targetPackage="${targetXMLPackage}" targetProject="${targetResourcesProject}"/>
+
+        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}"
+                             type="XMLMAPPER"/>
+
+        <table tableName="cip_sc_deploy_line_log"/>
+    </context>
+</generatorConfiguration>

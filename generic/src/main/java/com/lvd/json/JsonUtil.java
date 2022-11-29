@@ -1,4 +1,4 @@
-package lvd.json;
+package com.lvd.json;
 
 import com.alibaba.fastjson.JSONObject;
 

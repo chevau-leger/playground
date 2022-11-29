@@ -1,4 +1,4 @@
-package lvd.database;
+package com.lvd.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

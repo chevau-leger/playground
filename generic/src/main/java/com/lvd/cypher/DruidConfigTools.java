@@ -1,4 +1,4 @@
-package lvd.cypher;
+package com.lvd.cypher;
 
 import com.alibaba.druid.filter.config.ConfigTools;
 

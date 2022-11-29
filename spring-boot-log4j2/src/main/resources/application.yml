@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: spring-boot-log4j2
+
+logging:
+  file:
+    path: logs/${spring.application.name}

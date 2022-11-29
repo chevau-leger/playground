@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: spring-boot-logback
+
+logging:
+  file:
+    path: logs/${spring.application.name}

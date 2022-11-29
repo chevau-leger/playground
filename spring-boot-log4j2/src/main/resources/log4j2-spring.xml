@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN" monitorInterval="30">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout
+                    pattern="%magenta{%d{yyyy-MM-dd HH:mm:ss.SSS}} %red{[%t]} %highlight{%-5level} %blue{[%logger{36}]} %magenta{·⊱══>} %cyan{%msg%n}"/>
+        </Console>
+
+        <RollingFile name="RollingFile" fileName="${sys:LOG_PATH}.log"
+                     filePattern="${sys:LOG_PATH}-%d{yyyy-MM-dd}.log.zip">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level [%logger{36}] - %msg%n"/>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="256MB"/>
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="logs" maxDepth="2">
+                    <IfFileName glob="*.log.zip"/>
+                    <IfLastModified age="30d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </appenders>
+    <loggers>
+        <root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </root>
+    </loggers>
+</configuration>

@@ -1,4 +1,4 @@
-package lvd.uuid;
+package com.lvd.uuid;
 
 import java.util.UUID;
 
